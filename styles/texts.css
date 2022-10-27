@@ -1,0 +1,42 @@
+.font1 {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 40px;
+  line-height: 150%;
+}
+.font2 {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 150%;
+}
+.font3 {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 150%;
+}
+.font4 {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 150%;
+}
+.font4Regular {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+}
+.colorGrey100 {
+  color: var(--color-grey-100);
+}
+.colorGrey200 {
+  color: var(--color-grey-200);
+}
+.colorGrey700 {
+  color: var(--color-grey-700);
+}
+.colorBrand100 {
+  color: var(--color-brand-100);
+}

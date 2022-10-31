@@ -2,21 +2,16 @@ const baseUrl = "https://m2-api-living.herokuapp.com/news";
 
 export async function getNews() {
   try {
-    const request = await fetch(
-      "https://m2-api-living.herokuapp.com/news?page=0",
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
+    const request = await fetch(`${baseUrl}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
 
     const response = await request.json();
 
-    localStorage.setItem("post", JSON.stringify(response));
-
-    return response.news;
+    return response;
   } catch (err) {
     console.log(err);
   }

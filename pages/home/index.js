@@ -1,28 +1,22 @@
 import { observer } from "../../scripts.js/observerScroll.js";
 import { getNews } from "../../scripts.js/requests.js";
 
+async function filterPost(text) {
+  let filtered = await getNews();
+
+  const filteredPost = filtered.news.filter((post) => post.category === text);
+
+  return filteredPost;
+}
 export const renderNews = async () => {
   const ulList = document.querySelector("#ulNews");
   ulList.innerHTML = "";
 
   const render = await getNews();
 
-  render.forEach((element) => {
+  render.news.forEach((element) => {
     createNew(element);
   });
-
-  // if (JSON.parse(localStorage.getItem("category"))) {
-  //   const Buttons = document.querySelectorAll(".btnGrey");
-  //   console.log(btnFilter);
-  //   let arr = Array.from(Buttons);
-
-  //   const btnFilter = arr.find(
-  //     (botao) =>
-  //       botao.innerText === JSON.parse(localStorage.getItem("category"))
-  //   );
-
-  // btnFilter.click();
-  // }
 
   const section = document.querySelector("section");
   const divObserver = document.createElement("div");
@@ -69,35 +63,25 @@ export function createNew(post) {
 
   ulList.append(tagLi);
 }
-
 async function filter() {
   const btnsFilter = document.querySelectorAll(".btnGrey");
 
-  const tagUl = document.querySelectorAll(".ulNews");
+  const tagUl = document.querySelector("#ulNews");
 
   btnsFilter.forEach((btn) => {
     btn.addEventListener("click", async () => {
       tagUl.innerHTML = "";
 
-      if (btn.innerText === "Todos") {
+      const filter = btn.innerText;
+
+      if (filter === "Todos") {
         await renderNews(getNews());
       }
-
-      const filteredPost = await filterPost(btn.innerText);
-      console.log(filteredPost);
-      console.log(btn.innerText);
+      const filteredPost = await filterPost(filter);
 
       filteredPost.forEach((element) => {
-        renderNews(element);
+        createNew(element);
       });
     });
   });
-}
-
-async function filterPost(text) {
-  let postApi = await getNews();
-
-  const filteredPost = postApi.filter((post) => post.category === text);
-
-  return filteredPost;
 }

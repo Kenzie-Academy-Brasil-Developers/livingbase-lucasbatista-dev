@@ -47,6 +47,28 @@
 .containerMain section {
   width: 100%;
 }
+#containerBtn {
+  overflow-x: scroll;
+  width: 90%;
+  padding-bottom: 16px;
+
+  scrollbar-width: auto;
+  scrollbar-color: #bedac2 #ffffff;
+}
+
+*::-webkit-scrollbar {
+  width: 12px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #ffffff;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #bedac2;
+  border-radius: 8px;
+  border: 3px solid #ededed;
+}
 
 .containerMain section ul {
   width: 100%;
